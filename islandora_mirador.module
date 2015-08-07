@@ -5,6 +5,7 @@
  */
 function islandora_mirador_menu() {
   $items = array();
+
   $items['islandora_mirador/view/%'] = array(
     'title' => 'Islandora Mirador Viewer',
     'page callback' => 'islandora_mirador_viewer',
@@ -12,6 +13,7 @@ function islandora_mirador_menu() {
     'access arguments' => array(TRUE),
     'type' => MENU_NORMAL_ITEM,
   );
+
   $items['islandora_mirador/iframe'] = array(
     'title' => 'Islandora Mirador Iframe View',
     'page callback' => 'islandora_mirador_iframe_viewer',
@@ -19,6 +21,16 @@ function islandora_mirador_menu() {
     //'access arguments' => TRUE,
     'type' => MENU_NORMAL_ITEM,
   );
+  
+  $items['islandora_mirador/shared_canvas_manifest/%islandora_object'] = array(
+    'page callback' => 'islandora_mirador_shared_canvas_manifest_callback',
+    'page arguments' => array(1),
+    'access callback' => 'islandora_object_access_callback',
+    'access arguments' => array(ISLANDORA_VIEW_OBJECTS, 1),
+    'file' => 'includes/callback.inc',
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
