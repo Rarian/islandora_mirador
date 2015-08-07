@@ -60,3 +60,21 @@ function islandora_mirador_libraries_info() {
     ),
   );
 }
+
+
+/**
+ * Implements hook_islandora_viewer_info().
+ */
+function islandora_mirador_islandora_viewer_info() {
+  return array(
+    'islandora_mirador' => array(
+      'label' => t('Islandora Mirador'),
+      'description' => t('Mirador viewer rendering using on-the-fly IIIF manifest generation'),
+      'callback' => 'islandora_mirador_viewer',
+      'model' => array(
+        'islandora:bookCModel',
+        'islandora:newspaperIssueCModel',
+      ),
+    ),
+  );
+}
